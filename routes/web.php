@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransactionReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TransactionReportController::class, 'index']);
+
+Route::get('/transaction-report', [TransactionReportController::class, 'index'])->name('index');
+Route::get('/transaction-report/{id}', [TransactionReportController::class, 'show'])->name('view-items');
+Route::get('/rankings', [TransactionReportController::class, 'rank'])->name('view-ranks');
